@@ -1,0 +1,35 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_blog?serverTimezone=Europe/Vienna
+    username: patriot
+    password: iamfromaustria
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:29092
+      bindings:
+        input:
+          destination: blogservice.readers
+          content-type: application/json
+          group: blogservice.readers.group1
+          consumer:
+            concurrency: 3
+
+eureka:
+  client:
+    register-with-eureka: false
+    #    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:8761/eureka
