@@ -1,0 +1,45 @@
+GET http://localhost:8080/resources/blog
+###
+GET http://localhost:8080/resources/blog/1
+###
+POST http://localhost:8080/resources/blog
+Content-Type: application/json
+
+{
+  "author": {
+    "id": 2,
+    "firstName": "Martina",
+    "lastName": "Musterfrau"
+  },
+  "sight": {
+"id": 1,
+"name": "Stephansdom",
+"location": "Wien"
+},
+"title": "Meine zweite Reise zum Stephansdom",
+"text": "text text text text text text"
+}
+###
+POST http://localhost:8080/resources/blog
+Content-Type: application/json
+
+{
+  "author": {
+    "id": 2
+  },
+  "sight": {
+"name": "Neusiedlersee",
+"location": "Burgenland"
+},
+"title": "Meine dritte Reise zum Neusiedlersee",
+"text": "text text text text text text"
+}
+###
+GET http://localhost:8080/resources/author
+###
+GET http://localhost:8080/resources/author/1
+###
+GET http://localhost:8080/resources/sight
+###
+GET http://localhost:8080/resources/sight/1
+###
